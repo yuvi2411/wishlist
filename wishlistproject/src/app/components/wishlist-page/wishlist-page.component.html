@@ -1,0 +1,47 @@
+ <div class="box-custom ">
+  <div class=" box-custom-2  bordershade custom-clr">
+    <div class="custom-3 bodycontent">
+      <h1 class="fontsize"> My wishlist</h1>
+      <div *ngIf="wishdata.length>0">
+         <button class="bordershade-1" mat-raised-button (click)="clearWishlist()">Clear Wishlist</button>
+       </div>
+      </div>
+  </div>
+
+  <div  class="table-custom" *ngIf="wishdata.length>0; else emptypage">
+  <table class="marg">
+    <tr class="box-customize ">
+      <th>Image</th>
+      <th>Title</th>
+      <th>MRP</th>
+      <th>Add to Cart</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let item of wishdata" class="box-customize">
+      <td> <img src="https://bookcart.azurewebsites.net/Upload/{{item.coverFileName}}"></td>
+      <td  ><a href="" class="clr1" >{{item.title}}</a></td>
+      <td>{{ item.price | currency : 'INR' }}</td>
+      <td><button mat-raised-button color="primary" (click)="addtocart(item.bookId)">Add to Cart</button></td>
+      <td class="marg"><button mat-raised-button class class="custom-clr2"
+          (click)="removefromwishlist(item)">Remove from Wishlist</button></td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #emptypage>
+  <div>
+    <mat-card>
+      <mat-card-title>
+        Your wishlist is empty
+      </mat-card-title>
+      <button class="bordershade-1" mat-raised-button color="primary">Continue to Shopping</button>
+    </mat-card>
+  </div>
+</ng-template>
+</div> 
+
+
+
+
+
+
