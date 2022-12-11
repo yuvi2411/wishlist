@@ -1,0 +1,35 @@
+<div class="container">
+    <mat-form-field>
+        <mat-label>Country Risk</mat-label>
+        <mat-select placeholder="Country Risk" [formControl]="selectFormControl"  multiple >
+
+           
+                
+                <mat-chip *ngIf="selectFormControl.value?.length > 0">
+                <small>{{selectFormControl.value.length }}Item selected
+                    <mat-icon matChipRemove>cancel</mat-icon>
+                   </small>
+               </mat-chip>
+               
+            
+           
+                   
+                 <mat-optgroup>
+                    <input autocomplete="on" placeholder="Search" aria-label="Search" matInput
+                        [formControl]="searchTextboxControl">
+                      
+                      
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-optgroup>
+          
+
+
+
+
+
+
+        </mat-select>
+    </mat-form-field>
+</div>
